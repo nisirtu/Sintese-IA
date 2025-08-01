@@ -1,14 +1,12 @@
-/* --- 1. IMPORTAÇÃO DA FONTE "INTER" DO GOOGLE FONTS --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
-/* --- 2. VARIÁVEIS DE DESIGN ATUALIZADAS --- */
 :root {
   --background-color: #131314;
   --surface-color: #1e1f20;
   --primary-text-color: #e3e3e3;
   --secondary-text-color: #c4c7c5;
-  --accent-color: #4c7ec1; /* Cor Azure */
-  --font-family: 'Inter', sans-serif; /* Nova fonte */
+  --accent-color: #4c7ec1;
+  --font-family: 'Inter', sans-serif;
 }
 
 body {
@@ -18,7 +16,6 @@ body {
   color: var(--primary-text-color);
 }
 
-/* --- ESTRUTURA PRINCIPAL DO LAYOUT --- */
 .gemini-layout {
   display: flex;
   flex-direction: column;
@@ -28,7 +25,6 @@ body {
   padding: 0 1rem;
 }
 
-/* --- HEADER COM LOGO --- */
 .app-header {
   padding: 1rem 0;
 }
@@ -46,7 +42,6 @@ body {
   font-weight: 700;
 }
 
-/* --- ÁREA DE CONTEÚDO PRINCIPAL --- */
 .main-content {
   flex-grow: 1;
   overflow-y: auto;
@@ -65,7 +60,6 @@ body {
   font-weight: 700;
 }
 
-/* --- ÁREA DE INPUT ATUALIZADA --- */
 .input-area {
   padding: 1rem 0 1.5rem 0;
   margin-top: auto;
@@ -93,7 +87,7 @@ body {
   max-height: 200px;
   outline: none;
   line-height: 1.5;
-  overflow-y: hidden; /* Esconde a barra de rolagem */
+  overflow-y: hidden;
 }
 
 .summarizer-form button {
@@ -121,15 +115,13 @@ body {
   cursor: not-allowed;
 }
 
-
-/* --- EXIBIÇÃO DO RESUMO COM LISTAS NUMERADAS --- */
 .summary-display {
   animation: fadeIn 0.5s ease-in-out;
 }
 
 .summary-section {
   margin-bottom: 2rem;
-  position: relative; /* Adicionado para o botão de copiar */
+  position: relative;
 }
 
 .section-header {
@@ -193,12 +185,11 @@ body {
   font-size: 0.875rem;
 }
 
-/* --- SELETOR DE MODO E TIPO (REORGANIZADO) --- */
 .controls-container {
   display: flex;
-  justify-content: space-between; /* Coloca um de cada lado */
+  justify-content: space-between;
   align-items: center;
-  gap: 1.5rem; /* Aumenta o espaço entre eles */
+  gap: 1.5rem;
   margin-bottom: 1rem;
 }
 
@@ -216,7 +207,7 @@ body {
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.2s;
-  font-size: 14px; /* Aumenta um pouco a fonte */
+  font-size: 14px;
 }
 
 .mode-selector button.active {
@@ -226,7 +217,6 @@ body {
   font-weight: bold;
 }
 
-/* --- ESTILO MINIMALISTA PARA O SELETOR DE TIPO --- */
 .tone-selector {
   position: relative;
   display: flex;
@@ -240,21 +230,19 @@ body {
 }
 
 .tone-selector select {
-  -webkit-appearance: none; /* Remove o estilo padrão do Chrome/Safari */
-  -moz-appearance: none; /* Remove o estilo padrão do Firefox */
-  appearance: none; /* Remove o estilo padrão geral */
-  
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background-color: var(--surface-color);
   color: var(--primary-text-color);
   border: 1px solid #5f6368;
   border-radius: 8px;
-  padding: 8px 32px 8px 12px; /* Espaço extra à direita para a seta */
+  padding: 8px 32px 8px 12px;
   font-family: var(--font-family);
   font-size: 14px;
   cursor: pointer;
 }
 
-/* Adiciona a nossa seta personalizada */
 .tone-selector::after {
   content: '▼';
   font-size: 12px;
@@ -263,11 +251,9 @@ body {
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  pointer-events: none; /* Permite que o clique passe para o select */
+  pointer-events: none;
 }
 
-
-/* --- UPLOADER DE PDF --- */
 .pdf-uploader-form {
   border: none;
   padding: 0;
@@ -351,7 +337,6 @@ body {
   cursor: not-allowed;
 }
 
-/* --- UTILITÁRIOS --- */
 .loading-indicator, .error-message {
     text-align: center;
     padding: 20px;

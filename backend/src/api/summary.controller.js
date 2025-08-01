@@ -2,7 +2,6 @@ const geminiService = require('../services/gemini.service');
 const pdf = require('pdf-parse');
 const { YoutubeTranscript } = require('youtube-transcript');
 
-// --- FUNÇÃO DE SUMARIZAÇÃO DE TEXTO ---
 const handleSummarize = async (req, res) => {
   try {
     const { textToSummarize, tone } = req.body;
@@ -20,7 +19,6 @@ const handleSummarize = async (req, res) => {
   }
 };
 
-// --- FUNÇÃO DE SUMARIZAÇÃO DE PDF ---
 const handleSummarizePdf = async (req, res) => {
   try {
     const { tone } = req.body;
@@ -43,7 +41,6 @@ const handleSummarizePdf = async (req, res) => {
   }
 };
 
-// --- FUNÇÃO DE SUMARIZAÇÃO DE VÍDEO ---
 const handleSummarizeVideo = async (req, res) => {
   try {
     const { videoUrl, tone } = req.body;
@@ -66,7 +63,6 @@ const handleSummarizeVideo = async (req, res) => {
   }
 };
 
-// Exporta todas as três funções
 module.exports = {
   handleSummarize,
   handleSummarizePdf,

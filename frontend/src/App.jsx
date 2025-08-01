@@ -6,6 +6,8 @@ import PdfUploader from './components/PdfUploader';
 import VideoUrlForm from './components/VideoUrlForm';
 import './index.css';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+
 function App() {
   const [mode, setMode] = useState('text');
   const [tone, setTone] = useState('Profissional');
@@ -18,7 +20,7 @@ function App() {
     setError(null);
     setIsLoading(true);
     try {
-      const response = await axios.post('http://localhost:3001/api/summarize', {
+      const response = await axios.post(`${API_BASE_URL}/api/summarize`, {
         textToSummarize,
         tone,
       });
@@ -39,7 +41,7 @@ function App() {
     formData.append('pdfFile', file);
     formData.append('tone', tone);
     try {
-      const response = await axios.post('http://localhost:3001/api/summarize-pdf', formData, {
+      const response = await axios.post(`${API_BASE_URL}/api/summarize-pdf`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setSummaryData(response.data);
@@ -56,7 +58,7 @@ function App() {
     setError(null);
     setIsLoading(true);
     try {
-      const response = await axios.post('http://localhost:3001/api/summarize-video', { videoUrl, tone });
+      const response = await axios.post(`${API_BASE_URL}/api/summarize-video`, { videoUrl, tone });
       setSummaryData(response.data);
     } catch (err) {
       const errorMessage = err.response?.data?.message || "Não foi possível processar o vídeo.";
