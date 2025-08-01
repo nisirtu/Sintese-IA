@@ -20,6 +20,7 @@ function App() {
     setError(null);
     setIsLoading(true);
     try {
+      // --- ALTERAÇÃO AQUI ---
       const response = await axios.post(`${API_BASE_URL}/api/summarize`, {
         textToSummarize,
         tone,
@@ -41,6 +42,7 @@ function App() {
     formData.append('pdfFile', file);
     formData.append('tone', tone);
     try {
+      // --- ALTERAÇÃO AQUI ---
       const response = await axios.post(`${API_BASE_URL}/api/summarize-pdf`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
@@ -58,6 +60,7 @@ function App() {
     setError(null);
     setIsLoading(true);
     try {
+      // --- ALTERAÇÃO AQUI ---
       const response = await axios.post(`${API_BASE_URL}/api/summarize-video`, { videoUrl, tone });
       setSummaryData(response.data);
     } catch (err) {
