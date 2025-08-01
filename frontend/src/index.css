@@ -1,0 +1,372 @@
+/* --- 1. IMPORTAÇÃO DA FONTE "INTER" DO GOOGLE FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* --- 2. VARIÁVEIS DE DESIGN ATUALIZADAS --- */
+:root {
+  --background-color: #131314;
+  --surface-color: #1e1f20;
+  --primary-text-color: #e3e3e3;
+  --secondary-text-color: #c4c7c5;
+  --accent-color: #4c7ec1; /* Cor Azure */
+  --font-family: 'Inter', sans-serif; /* Nova fonte */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+}
+
+/* --- ESTRUTURA PRINCIPAL DO LAYOUT --- */
+.gemini-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* --- HEADER COM LOGO --- */
+.app-header {
+  padding: 1rem 0;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.logo-container h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+/* --- ÁREA DE CONTEÚDO PRINCIPAL --- */
+.main-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-bottom: 2rem;
+}
+
+.welcome-message {
+  text-align: center;
+  padding-top: 20vh;
+  color: var(--secondary-text-color);
+}
+
+.welcome-message h2 {
+  color: var(--primary-text-color);
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/* --- ÁREA DE INPUT ATUALIZADA --- */
+.input-area {
+  padding: 1rem 0 1.5rem 0;
+  margin-top: auto;
+}
+
+.summarizer-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px 12px 24px;
+  border: 1px solid #5f6368;
+  border-radius: 32px;
+  background-color: var(--surface-color);
+}
+
+.summarizer-form textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--primary-text-color);
+  font-size: 16px;
+  font-family: var(--font-family);
+  resize: none;
+  height: 24px;
+  max-height: 200px;
+  outline: none;
+  line-height: 1.5;
+  overflow-y: hidden; /* Esconde a barra de rolagem */
+}
+
+.summarizer-form button {
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+  padding-left: 3px;
+}
+
+.summarizer-form button:hover:not(:disabled) {
+  background-color: #6a95c9;
+}
+
+.summarizer-form button:disabled {
+  background-color: #5f6368;
+  cursor: not-allowed;
+}
+
+
+/* --- EXIBIÇÃO DO RESUMO COM LISTAS NUMERADAS --- */
+.summary-display {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.summary-section {
+  margin-bottom: 2rem;
+  position: relative; /* Adicionado para o botão de copiar */
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copy-button {
+  background: none;
+  border: 1px solid var(--surface-color);
+  color: var(--secondary-text-color);
+  padding: 4px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.summary-section h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  border-bottom: 1px solid #5f6368;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.summary-section p, .summary-section li {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--secondary-text-color);
+}
+
+.summary-section ol {
+  list-style: none;
+  counter-reset: custom-counter;
+  padding-left: 0;
+}
+
+.summary-section li {
+  counter-increment: custom-counter;
+  padding-left: 2.5rem;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.summary-section li::before {
+  content: counter(custom-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+}
+
+/* --- SELETOR DE MODO E TIPO (REORGANIZADO) --- */
+.controls-container {
+  display: flex;
+  justify-content: space-between; /* Coloca um de cada lado */
+  align-items: center;
+  gap: 1.5rem; /* Aumenta o espaço entre eles */
+  margin-bottom: 1rem;
+}
+
+.mode-selector {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.mode-selector button {
+  background: none;
+  border: 1px solid var(--surface-color);
+  color: var(--secondary-text-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px; /* Aumenta um pouco a fonte */
+}
+
+.mode-selector button.active {
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  border-color: var(--accent-color);
+  font-weight: bold;
+}
+
+/* --- ESTILO MINIMALISTA PARA O SELETOR DE TIPO --- */
+.tone-selector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--secondary-text-color);
+}
+
+.tone-selector label {
+  font-size: 14px;
+}
+
+.tone-selector select {
+  -webkit-appearance: none; /* Remove o estilo padrão do Chrome/Safari */
+  -moz-appearance: none; /* Remove o estilo padrão do Firefox */
+  appearance: none; /* Remove o estilo padrão geral */
+  
+  background-color: var(--surface-color);
+  color: var(--primary-text-color);
+  border: 1px solid #5f6368;
+  border-radius: 8px;
+  padding: 8px 32px 8px 12px; /* Espaço extra à direita para a seta */
+  font-family: var(--font-family);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Adiciona a nossa seta personalizada */
+.tone-selector::after {
+  content: '▼';
+  font-size: 12px;
+  color: var(--secondary-text-color);
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Permite que o clique passe para o select */
+}
+
+
+/* --- UPLOADER DE PDF --- */
+.pdf-uploader-form {
+  border: none;
+  padding: 0;
+}
+
+.pdf-uploader-container {
+  background-color: var(--surface-color);
+  border: 1px solid #5f6368;
+  border-radius: 28px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+}
+
+.select-pdf-button {
+  background: none;
+  border: none;
+  color: var(--secondary-text-color);
+  font-size: 16px;
+  font-family: var(--font-family);
+  cursor: pointer;
+  padding: 12px 20px;
+  width: 100%;
+}
+
+.file-info-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+  padding: 0 8px;
+}
+
+.file-name {
+  color: var(--primary-text-color);
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cancel-button {
+  background: none;
+  border: none;
+  color: #ff8a80;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.cancel-button:hover {
+  background-color: #5f6368;
+}
+
+.submit-arrow-button {
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.2s;
+}
+
+.submit-arrow-button:hover:not(:disabled) {
+  background-color: #6a95c9;
+}
+
+.submit-arrow-button:disabled {
+  background-color: #5f6368;
+  cursor: not-allowed;
+}
+
+/* --- UTILITÁRIOS --- */
+.loading-indicator, .error-message {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    font-size: 18px;
+    border-radius: 8px;
+}
+
+.error-message {
+    color: #ff8a80;
+    background-color: #2a1a1a;
+    border: 1px solid #ff8a80;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
